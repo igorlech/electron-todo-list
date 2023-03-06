@@ -26,6 +26,24 @@
  * ```
  */
 
-import './index.css';
+import "./index.css";
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+console.log(
+  '👋 This message is being logged by "renderer.ts", included via webpack'
+);
+
+document
+  .getElementById("toggle-dark-mode")
+  .addEventListener("click", async () => {
+    const isDarkMode = await window.darkMode.toggle();
+    document.getElementById("theme-source").innerHTML = isDarkMode
+      ? "Dark"
+      : "Light";
+  });
+
+document
+  .getElementById("reset-to-system")
+  .addEventListener("click", async () => {
+    await window.darkMode.system();
+    document.getElementById("theme-source").innerHTML = "System";
+  });
