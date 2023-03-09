@@ -6,10 +6,17 @@
     <link rel="stylesheet" type="text/css" href="./index.css" />
   </head>
   <body>
+    <div class="theme-picker">
+      <h2 class="theme-heading">Theme:</h2>
+      <div class="theme-buttons-container">
+        <button id="toggle-dark-mode" class="theme-button">Dark</button>
+        <button id="reset-to-system" class="theme-button">System</button>
+      </div>
+    </div>
     <h1>TO DO LIST:</h1>
     <div class="todo-input">
-      <input type="text" class="todo-input-text" />
-      <button class="todo-input-button">Add</button>
+      <input type="text" class="todo-input-text" id="inputfield" />
+      <button class="todo-input-button" id="add">Add</button>
     </div>
     <div class="list-container">
       <ul class="list">
@@ -32,13 +39,6 @@
           <button class="list-item-button">Edit</button>
         </li>
       </ul>
-    </div>
-    <div class="theme-picker">
-      <h2 class="theme-heading">Theme:</h2>
-      <div class="theme-buttons-container">
-        <button id="toggle-dark-mode" class="theme-button">Dark</button>
-        <button id="reset-to-system" class="theme-button">System</button>
-      </div>
     </div>
     <script src="renderer.ts"></script>
   </body>

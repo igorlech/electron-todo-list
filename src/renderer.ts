@@ -1,31 +1,3 @@
-/**
- * This file will automatically be loaded by webpack and run in the "renderer" context.
- * To learn more about the differences between the "main" and the "renderer" context in
- * Electron, visit:
- *
- * https://electronjs.org/docs/latest/tutorial/process-model
- *
- * By default, Node.js integration in this file is disabled. When enabling Node.js integration
- * in a renderer process, please be aware of potential security implications. You can read
- * more about security risks here:
- *
- * https://electronjs.org/docs/tutorial/security
- *
- * To enable Node.js integration in this file, open up `main.js` and enable the `nodeIntegration`
- * flag:
- *
- * ```
- *  // Create the browser window.
- *  mainWindow = new BrowserWindow({
- *    width: 800,
- *    height: 600,
- *    webPreferences: {
- *      nodeIntegration: true
- *    }
- *  });
- * ```
- */
-
 import "./index.css";
 
 console.log(
@@ -47,3 +19,25 @@ document
     await window.darkMode.system();
     document.getElementById("theme-source").innerHTML = "System";
   });
+
+const input = <HTMLInputElement>document.querySelector("#inputfield");
+const add = document.querySelector("#add");
+let elementTemplate = "";
+
+input.addEventListener("input", (e) => {
+  const target = e.target as HTMLInputElement;
+  console.log(target.value);
+});
+
+add.addEventListener("click", () => {
+  console.log("add clicked");
+  console.log(input.value);
+
+  elementTemplate = `<li class="list-item">
+  <input type="checkbox" class="list-item-checkbox" />
+  <span class="list-item-text">${input.value}</span>
+  <button class="list-item-button">Delete</button>
+  <button class="list-item-button">Edit</button>
+  </li>`;
+  document.querySelector(".list").innerHTML += elementTemplate;
+});
