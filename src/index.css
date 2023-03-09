@@ -13,14 +13,51 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #333;
+    background: black;
+    color: white;
+  }
+
+  .theme-button {
     color: white;
   }
 }
 
 @media (prefers-color-scheme: light) {
   body {
-    background: #ddd;
+    background: white;
     color: black;
   }
+
+  .theme-button {
+    color: black;
+  }
+}
+
+.theme-picker {
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+}
+
+.theme-heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.theme-buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 3px solid blue;
+  padding: 0.6rem 0.6rem;
+  max-width: 6rem;
+  border-radius: 25px;
+  margin: 0.5rem 0;
 }
