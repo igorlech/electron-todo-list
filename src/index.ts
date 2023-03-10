@@ -1,11 +1,13 @@
 import { app, BrowserWindow, ipcMain, nativeTheme } from "electron";
-import * as path from "path";
 
 export {};
 
 declare global {
   interface Window {
-    darkMode: any;
+    darkMode: {
+      toggle: () => Promise<boolean>;
+      system: () => Promise<void>;
+    };
   }
 }
 

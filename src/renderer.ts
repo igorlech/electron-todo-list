@@ -41,3 +41,33 @@ add.addEventListener("click", () => {
   </li>`;
   document.querySelector(".list").innerHTML += elementTemplate;
 });
+
+const valueToDB = input.value;
+
+let request: IDBOpenDBRequest;
+let db: IDBDatabase;
+
+// eslint-disable-next-line prefer-const
+request = window.indexedDB.open("todo", 1);
+request.onerror = () => {
+  console.log("error: ");
+};
+request.onupgradeneeded = () => {
+  db = request.result;
+  const objectStore = db.createObjectStore("todo", { keyPath: "id" });
+  objectStore.createIndex("text", "text", { unique: false });
+  console.log("success: " + db);
+};
+
+db = request.result;
+const transaction = db.transaction("todo", "readwrite");
+const objectStore = transaction.objectStore("todo");
+const newrequest = objectStore.add({
+  valueToDB,
+});
+newrequest.onsuccess = () => {
+  console.log("Score added");
+};
+newrequest.onerror = () => {
+  console.log("Error adding score");
+};
