@@ -1,5 +1,4 @@
 import "./index.css";
-
 import { v4 as uuidv4 } from "uuid";
 
 // Theme switch logic
@@ -22,72 +21,70 @@ document
 
 // TodoList logic
 
+type Task = {
+  id: string;
+  title: string;
+  addedOn: Date;
+  isCompleted: boolean;
+};
+
 const form = document.querySelector<HTMLFormElement>("#task-form");
 const input = document.querySelector<HTMLInputElement>("#task-input");
-const add = document.querySelector("#task-add");
 const list = document.querySelector<HTMLUListElement>(".list");
-//let elementTemplate = "";
+const taskStorage: Task[] = loadTasks();
+taskStorage.forEach(addItemToList);
 
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
 
   if (input?.value == "" || input?.value == null) return;
 
-  const task = {
+  const newTask: Task = {
     id: uuidv4(),
     title: input.value,
-    addedOn: new Date().getTime(),
+    addedOn: new Date(),
     isCompleted: false,
   };
+
+  taskStorage.push(newTask);
+  saveTasks();
+
+  addItemToList(newTask);
+  input.value = "";
 });
 
-/* input.addEventListener("input", (e) => {
-  const target = e.target as HTMLInputElement;
-  console.log(target.value);
-});
+function addItemToList(task: Task) {
+  const taskContainer = document.createElement("li");
+  const taskContent = document.createElement("label");
 
-add.addEventListener("click", () => {
-  console.log("add clicked");
-  console.log(input.value);
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.checked = task.isCompleted;
+  checkbox.addEventListener("change", (e) => {
+    const target = e.target as HTMLInputElement;
+    task.isCompleted = target.checked;
+    saveTasks();
+  });
 
-  elementTemplate = `<li class="list-item">
-  <input type="checkbox" class="list-item-checkbox" />
-  <span class="list-item-text">${input.value}</span>
-  <button class="list-item-button">Delete</button>
-  <button class="list-item-button">Edit</button>
-  </li>`;
-  list.innerHTML += elementTemplate;
-}); */
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "Delete";
+  deleteButton.type = "button";
 
-// IndexedDBn stuff
+  const editButton = document.createElement("button");
+  editButton.innerHTML = "Edit";
+  editButton.type = "button";
 
-/* const valueToDB = input.value;
+  taskContent.append(checkbox, task.title, deleteButton, editButton);
+  taskContainer.append(taskContent);
+  list?.append(taskContainer);
+}
 
-let request: IDBOpenDBRequest;
-let db: IDBDatabase; */
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(taskStorage));
+}
 
-// eslint-disable-next-line prefer-const
-/* request = window.indexedDB.open("todo", 1);
-request.onerror = () => {
-  console.log("error: ");
-};
-request.onupgradeneeded = () => {
-  db = request.result;
-  const objectStore = db.createObjectStore("todo", { keyPath: "id" });
-  objectStore.createIndex("text", "text", { unique: false });
-  console.log("success: " + db);
-};
-
-db = request.result;
-const transaction = db.transaction("todo", "readwrite");
-const objectStore = transaction.objectStore("todo");
-const newrequest = objectStore.add({
-  valueToDB,
-});
-newrequest.onsuccess = () => {
-  console.log("Score added");
-};
-newrequest.onerror = () => {
-  console.log("Error adding score");
-};
- */
+function loadTasks(): Task[] {
+  const taskJSON = localStorage.getItem("tasks");
+  if (taskJSON == null) return [];
+  return JSON.parse(localStorage.getItem("tasks"));
+}
