@@ -55,10 +55,14 @@ form?.addEventListener("submit", (e) => {
 
 function addItemToList(task: Task) {
   const taskContainer = document.createElement("li");
+  taskContainer.classList.add("task-li");
+
   const taskContent = document.createElement("label");
+  taskContent.classList.add("task-content");
 
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
+  checkbox.classList.add("task-checkbox");
   checkbox.checked = task.isCompleted;
   checkbox.addEventListener("change", (e) => {
     const target = e.target as HTMLInputElement;
@@ -67,10 +71,12 @@ function addItemToList(task: Task) {
   });
 
   const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-button");
   deleteButton.innerHTML = "Delete";
   deleteButton.type = "button";
 
   const editButton = document.createElement("button");
+  editButton.classList.add("edit-button");
   editButton.innerHTML = "Edit";
   editButton.type = "button";
 
@@ -88,3 +94,12 @@ function loadTasks(): Task[] {
   if (taskJSON == null) return [];
   return JSON.parse(localStorage.getItem("tasks"));
 }
+
+// TODO:
+// - add edit functionality
+// - add delete functionality
+// - add date added
+// - add date completed? + add due date?
+// - add sorting
+// - add search?
+// - add crossed out text when completed

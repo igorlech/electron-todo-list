@@ -1,9 +1,49 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+#task-input {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#task-add {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+.task-li {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.edit-button,
+.delete-button {
+  margin-left: 0.5rem;
+}
+
+.task-checkbox {
+  margin: 0;
+  margin-right: 0.5rem;
 }
 
 .list {
