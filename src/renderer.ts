@@ -1,8 +1,8 @@
 import "./index.css";
 
-console.log(
-  '👋 This message is being logged by "renderer.ts", included via webpack'
-);
+import { v4 as uuidv4 } from "uuid";
+
+// Theme switch logic
 
 document
   .getElementById("toggle-dark-mode")
@@ -20,11 +20,28 @@ document
     document.getElementById("theme-source").innerHTML = "System";
   });
 
-const input = <HTMLInputElement>document.querySelector("#inputfield");
-const add = document.querySelector("#add");
-let elementTemplate = "";
+// TodoList logic
 
-input.addEventListener("input", (e) => {
+const form = document.querySelector<HTMLFormElement>("#task-form");
+const input = document.querySelector<HTMLInputElement>("#task-input");
+const add = document.querySelector("#task-add");
+const list = document.querySelector<HTMLUListElement>(".list");
+//let elementTemplate = "";
+
+form?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (input?.value == "" || input?.value == null) return;
+
+  const task = {
+    id: uuidv4(),
+    title: input.value,
+    addedOn: new Date().getTime(),
+    isCompleted: false,
+  };
+});
+
+/* input.addEventListener("input", (e) => {
   const target = e.target as HTMLInputElement;
   console.log(target.value);
 });
@@ -39,16 +56,18 @@ add.addEventListener("click", () => {
   <button class="list-item-button">Delete</button>
   <button class="list-item-button">Edit</button>
   </li>`;
-  document.querySelector(".list").innerHTML += elementTemplate;
-});
+  list.innerHTML += elementTemplate;
+}); */
 
-const valueToDB = input.value;
+// IndexedDBn stuff
+
+/* const valueToDB = input.value;
 
 let request: IDBOpenDBRequest;
-let db: IDBDatabase;
+let db: IDBDatabase; */
 
 // eslint-disable-next-line prefer-const
-request = window.indexedDB.open("todo", 1);
+/* request = window.indexedDB.open("todo", 1);
 request.onerror = () => {
   console.log("error: ");
 };
@@ -71,3 +90,4 @@ newrequest.onsuccess = () => {
 newrequest.onerror = () => {
   console.log("Error adding score");
 };
+ */
