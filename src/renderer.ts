@@ -101,10 +101,9 @@ function loadTasks(): Task[] {
 }
 
 // TODO:
-// - add edit functionality
 // - add delete functionality
+// - add edit functionality
 // - add date added
 // - add date completed? + add due date?
-// - add sorting
+// - add sorting?
 // - add search?
-// - add crossed out text when completed
