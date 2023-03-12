@@ -68,6 +68,11 @@ function addItemToList(task: Task) {
     const target = e.target as HTMLInputElement;
     task.isCompleted = target.checked;
     saveTasks();
+    if (checkbox.checked) {
+      taskContent.classList.add("completed");
+    } else {
+      taskContent.classList.remove("completed");
+    }
   });
 
   const deleteButton = document.createElement("button");

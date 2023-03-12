@@ -12,6 +12,10 @@ h1 {
   margin: 1rem 0;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 #task-input {
   padding: 0.5rem;
   font-size: 1.2rem;
@@ -26,6 +30,10 @@ h1 {
   border-radius: 5px;
   color: black;
   background-color: lightblue;
+  cursor: pointer;
+}
+
+.task-checkbox {
   cursor: pointer;
 }
 
