@@ -36,6 +36,8 @@
   }
 }
 
+/* GENERAL STYLING */
+
 body {
   margin: auto;
   max-width: 38rem;
@@ -45,7 +47,7 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   margin: 1rem 0;
 }
@@ -67,7 +69,7 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: black;
-  background-color: lightblue;
+  background-color: rgb(211, 241, 255);
   cursor: pointer;
 }
 
@@ -109,13 +111,19 @@ h1 {
 
 .theme-button {
   cursor: pointer;
-  background-color: transparent;
-  border: 3px solid blue;
+  background-color: rgb(211, 241, 255);
+  border: 2px solid rgb(64, 64, 216);
   padding: 0.4rem 0.2rem;
   min-width: 5rem;
   border-radius: 25px;
   margin: 0.5rem 0;
   margin-right: 0.5rem;
+}
+
+.theme-button:hover {
+  background-color: rgb(64, 64, 216);
+  color: white;
+  transition: 0.3s;
 }
 
 .modal {
