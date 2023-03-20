@@ -19,6 +19,52 @@ document
     document.getElementById("theme-source").innerHTML = "System";
   });
 
+// MODALS LOGIC
+
+const modalTheme = document.querySelector("#modal-theme") as HTMLDivElement;
+const openModalTheme = document.querySelector(
+  "#modal-handler-theme"
+) as HTMLButtonElement;
+const closeModalTheme = document.querySelector(
+  "#modal-theme-close"
+) as HTMLSpanElement;
+
+openModalTheme.addEventListener("click", () => {
+  modalTheme.style.display = "flex";
+});
+
+closeModalTheme.addEventListener("click", () => {
+  modalTheme.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modalTheme) {
+    modalTheme.style.display = "none";
+  }
+});
+
+const modalEdit = document.querySelector("#modal-edit") as HTMLDivElement;
+const openModalEdit = document.querySelector(
+  "#modal-handler-edit"
+) as HTMLButtonElement;
+const closeModalEdit = document.querySelector(
+  "#modal-edit-close"
+) as HTMLSpanElement;
+
+openModalEdit.addEventListener("click", () => {
+  modalEdit.style.display = "flex";
+});
+
+closeModalEdit.addEventListener("click", () => {
+  modalEdit.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target == modalEdit) {
+    modalEdit.style.display = "none";
+  }
+});
+
 // LIST LOGIC
 
 type Task = {

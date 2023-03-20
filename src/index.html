@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>TODO APP</title>
     <link rel="stylesheet" type="text/css" href="./index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,13 +12,8 @@
     />
   </head>
   <body>
-    <div class="theme-picker">
-      <h2 class="theme-heading">Theme:</h2>
-      <div class="theme-buttons-container">
-        <button id="toggle-dark-mode" class="theme-button">Dark</button>
-        <button id="reset-to-system" class="theme-button">System</button>
-      </div>
-    </div>
+    <button class="modal-open" id="modal-handler-theme">Theme</button>
+    <button class="modal-open" id="modal-handler-edit">Edit</button>
     <h1>TO DO LIST:</h1>
     <div class="todo-input">
       <form id="task-form">
@@ -30,6 +25,22 @@
     </div>
     <div class="list-container">
       <ul class="list"></ul>
+    </div>
+    <div class="modal modal-theme" id="modal-theme">
+      <div class="modal-content content-theme">
+        <span id="modal-theme-close" class="close">&times;</span>
+        <h2 class="theme-heading">Theme:</h2>
+        <div class="theme-buttons-container">
+          <button id="toggle-dark-mode" class="theme-button">Dark</button>
+          <button id="reset-to-system" class="theme-button">System</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-edit" id="modal-edit">
+      <div class="modal-content content-edit">
+        <span id="modal-edit-close" class="close">&times;</span>
+        <h2>Modal Edit</h2>
+      </div>
     </div>
     <script src="renderer.ts"></script>
   </body>
