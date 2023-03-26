@@ -44,6 +44,9 @@ body {
   padding: 2rem;
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
+
+  display: grid;
+  justify-content: center;
 }
 
 h1 {
@@ -142,4 +145,8 @@ h1 {
   background-color: rgb(123, 202, 228);
   padding: 1rem;
   border-radius: 5px;
+}
+
+.close:hover {
+  cursor: pointer;
 }
