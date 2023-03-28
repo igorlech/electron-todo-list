@@ -1,6 +1,7 @@
 @media (prefers-color-scheme: dark) {
   body {
     background: black;
+    background-color: black;
     color: white;
   }
 
@@ -20,6 +21,7 @@
 @media (prefers-color-scheme: light) {
   body {
     background: white;
+    background-color: rgb(245, 235, 222);
     color: black;
   }
 
@@ -85,6 +87,9 @@ h1 {
   align-items: center;
   font-size: 1.2rem;
   margin: 0.5rem 0;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 .edit-button,
